@@ -27,18 +27,18 @@ casper.then(function () {
     });
 });
 
-casper.thenBypassIf(function () {
-    this.wait(6000, function () {
-        return this.exists('#instanceWakeUpBtn');
-    });
-});
+// casper.thenBypassIf(function () {
+//     this.wait(6000, function () {
+//         return this.exists('#instanceWakeUpBtn');
+//     });
+// });
 
 casper.then(function () {
     this.echo('Page: ' + this.getTitle());
 });
 
-casper.then(function () {
-    this.click('#instanceWakeUpBtn');
-});
+// casper.then(function () {
+//     this.click('#instanceWakeUpBtn');
+// });
 
 casper.run();
