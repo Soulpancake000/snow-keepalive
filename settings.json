@@ -1,4 +1,5 @@
 {
-    "username": "FILL_IN",
-    "password": "FILL_IN"
+    "username": "admin",
+    "password": "",
+    "url":"https://dev<XXXX>.service-now.com"
 };

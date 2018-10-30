@@ -1,44 +1,19 @@
-const casper = require('casper').create();
+var casper = require('casper').create({
+    verbose: false,
+    logLevel: "error"
+});
 var config = require('./settings');
-
-casper.start('https://developer.servicenow.com/app.do#!/home');
-
+casper.start(config.url + '/welcome.do');
 casper.then(function () {
-    this.wait(3000, function () {
+    this.wait(5000, function () {
         this.echo('Page: ' + this.getTitle());
-        this.click('#dp-hdr-login-link');
+        this.sendKeys('form#loginPage input#user_name', config.username);
+        this.sendKeys('input#user_password', config.password);
+        this.click('button#sysverb_login');
     });
-});
-
-casper.then(function () {
-    this.wait(10000, function () {
+    this.wait(5000, function () {
         this.echo('Page: ' + this.getTitle());
-
-        this.sendKeys('input#username', config.username);
-        this.sendKeys('input#password', config.password);
-
-        this.click('#submitButton');
+        //this.echo('Page: ' + this.getPageContent());
     });
 });
-
-casper.then(function () {
-    this.wait(6000, function () {
-        this.open('https://developer.servicenow.com/app.do#!/instance');
-    });
-});
-
-casper.then(function () {
-    this.wait(6000, function () {
-        if (this.exists('#instanceWakeUpBtn')) {
-            this.click('#instanceWakeUpBtn');
-        }
-    });
-});
-
-casper.then(function () {
-    this.wait(6000, function () {
-        this.echo('Page: ' + this.getTitle());
-    });
-});
-
 casper.run();
