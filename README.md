@@ -1,5 +1,5 @@
 # snow-keepalive
-Keeps your SNOW Dev instances alive
+Keeps your SNOW Dev instance alive
 
 
 ## Prerequisites
